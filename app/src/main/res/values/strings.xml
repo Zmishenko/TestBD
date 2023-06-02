@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Test DB</string>
+    <string name="reason">Причина</string>
+    <string name="type">Тип уведомления</string>
+    <string name="dateFrom">Перенести с ДАТА</string>
+    <string name="dateTo">Перенести на ДАТА</string>
+    <string name="groupNum">Номер группы</string>
+    <string name="predmet">Дисциплина</string>
+    <string name="button_save_event">Создать уведомление</string>
+</resources>
