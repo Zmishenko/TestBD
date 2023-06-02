@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.testdb.R;
 
 public class EventHolder extends RecyclerView.ViewHolder {
-
     private TextView type;
     private TextView reason;
     private TextView dateFrom;

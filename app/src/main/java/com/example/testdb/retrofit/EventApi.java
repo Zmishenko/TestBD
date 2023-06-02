@@ -13,9 +13,6 @@ public interface EventApi {
     @GET("/event/get-all")
     Call<List<Event>> getAllEvent();
 
-//    @GET("/event/authentication")
-//    Call<Optional<Person>> authentication();
-
     @POST("/event/save")
     Call<Event> save(@Body Event event);
 }
