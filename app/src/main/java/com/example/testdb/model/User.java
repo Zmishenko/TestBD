@@ -1,23 +1,18 @@
 package com.example.testdb.model;
 
 public class User {
-
     private Long id;
     private String role;
     private String login;
     private String password;
     private String mail;
-    private String FIO;
+    private String surname;
+    private String first_name;
+    private String fathers_name;
     private String userGroup;
     private String departament;
     private String eventsID;
     private boolean isAuthorized;
-
-    public User(String login, String password, boolean isAuthorized) {
-        this.login = login;
-        this.password = password;
-        this.isAuthorized = isAuthorized;
-    }
 
     public Long getId() {
         return id;
@@ -39,8 +34,16 @@ public class User {
         return mail;
     }
 
-    public String getFIO() {
-        return FIO;
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public String getFathers_name() {
+        return fathers_name;
     }
 
     public String getUserGroup() {
@@ -71,7 +74,9 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
-                ", FIO='" + FIO + '\'' +
+                ", surname='" + surname + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", fathers_name='" + fathers_name + '\'' +
                 ", userGroup='" + userGroup + '\'' +
                 ", departament='" + departament + '\'' +
                 ", eventsID='" + eventsID + '\'' +

@@ -9,11 +9,12 @@ import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 public interface UserApi {
-//    @GET("/authentication/login")
-//    Call<User> authentication(@Query("login") String login, @Query("password") String password);
-    @POST("/authentication/login")
-    Call<User> authentication (@Body User user);
+    @GET("/authentication/login/{login}/{password}")
+    Call<User> authentication(@Path("login") String login, @Path("password") String password);
+//    @POST("/authentication/login")
+//    Call<User> authentication (@Body User user);
 }

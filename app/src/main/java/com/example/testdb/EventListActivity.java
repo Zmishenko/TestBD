@@ -14,7 +14,6 @@ import com.example.testdb.retrofit.EventApi;
 import com.example.testdb.retrofit.RetrofitService;
 import com.example.testdb.retrofit.UserApi;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.squareup.okhttp.ResponseBody;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class EventListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.eventList_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FloatingActionButton floatingActionButton = findViewById(R.id.employeeList_fab);
+        FloatingActionButton floatingActionButton = findViewById(R.id.eventList_fab);
         floatingActionButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, EventForm.class);
             startActivity(intent);
@@ -44,7 +43,11 @@ public class EventListActivity extends AppCompatActivity {
 
     private void loadEvent() {
         RetrofitService retrofitService = new RetrofitService();
+
         try {
+            //
+            //Получение Events
+            //
             EventApi eventApi = retrofitService.getRetrofit().create(EventApi.class);
             eventApi.getAllEvent()
                     .enqueue(new Callback<List<Event>>() {
@@ -63,14 +66,22 @@ public class EventListActivity extends AppCompatActivity {
         }
 
         try {
-            User tempUser = new User("admin", "admin", false);
+            //
+            //Получение User
+            //
             UserApi userApi = retrofitService.getRetrofit().create(UserApi.class);
-            Call<User> userCall = userApi.authentication(tempUser);
+            Call<User> userCall = userApi.authentication("user1", "user1");
             userCall.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Response<User> response, Retrofit retrofit) {
                     // response.body() тут находятся данные пользоватля если вход успешный
-                    Toast.makeText(com.example.testdb.EventListActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
+                    try {
+                        User userFromBD = response.body();
+                        String FIO = userFromBD.getSurname() + userFromBD.getFirst_name() + userFromBD.getFathers_name();
+                        Toast.makeText(com.example.testdb.EventListActivity.this, FIO, Toast.LENGTH_LONG).show();
+                    }catch (Exception e) {
+                        System.out.println("=======Exception======" + e.getMessage()  + "=======Exception======");
+                    }
                 }
 
                 @Override
@@ -79,7 +90,7 @@ public class EventListActivity extends AppCompatActivity {
                 }
             });
         }catch (Exception e){
-            System.out.println("=======ERROR======" + e.getMessage()  + "=======ERROR======");
+            System.out.println("=======Exception======" + e.getMessage()  + "=======Exception======");
         }
     }
 

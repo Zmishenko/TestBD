@@ -15,4 +15,7 @@ public interface EventApi {
 
     @POST("/event/save")
     Call<Event> save(@Body Event event);
+
+    @POST("/event/change")
+    Call<Event> changeEvent(@Body Event event);
 }

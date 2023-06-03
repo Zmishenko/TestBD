@@ -22,15 +22,12 @@ public class EventForm extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("EventForm:onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initializeComponents();
     }
 
     private void initializeComponents() {
-        System.out.println("EventForm:initializeComponents");
         TextInputEditText inputEditTextReason = findViewById(R.id.reason);
         TextInputEditText inputEditTextType = findViewById(R.id.type);
         TextInputEditText inputEditTextDateFrom = findViewById(R.id.dateFrom);
@@ -57,15 +54,12 @@ public class EventForm extends AppCompatActivity {
                     .enqueue(new Callback<Event>() {
                         @Override
                         public void onResponse(Response<Event> response, Retrofit retrofit) {
-                            System.out.println("event");
-                            System.out.println(event.toString());
                             Toast.makeText(EventForm.this, "Save successful!", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(Throwable t) {
                             Toast.makeText(EventForm.this, "Save failed!!!", Toast.LENGTH_SHORT).show();
-                            System.out.println("EventForm:"+t.getMessage());
                             Logger.getLogger(EventForm.class.getName()).log(Level.SEVERE, "Error occurred", t);
                         }
                     });
