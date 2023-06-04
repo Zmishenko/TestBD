@@ -77,8 +77,7 @@ public class EventListActivity extends AppCompatActivity {
                     // response.body() тут находятся данные пользоватля если вход успешный
                     try {
                         User userFromBD = response.body();
-                        String FIO = userFromBD.getSurname() + userFromBD.getFirst_name() + userFromBD.getFathers_name();
-                        Toast.makeText(com.example.testdb.EventListActivity.this, FIO, Toast.LENGTH_LONG).show();
+                        Toast.makeText(com.example.testdb.EventListActivity.this, userFromBD.getFio(), Toast.LENGTH_LONG).show();
                     }catch (Exception e) {
                         System.out.println("=======Exception======" + e.getMessage()  + "=======Exception======");
                     }

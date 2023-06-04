@@ -66,6 +66,11 @@ public class User {
         isAuthorized = authorized;
     }
 
+    // Получение полного ФИО
+    public String getFio() {
+        return surname + " " + first_name + " " + fathers_name;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -74,9 +79,7 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
-                ", surname='" + surname + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", fathers_name='" + fathers_name + '\'' +
+                ", fio='" + getFio() + '\'' +
                 ", userGroup='" + userGroup + '\'' +
                 ", departament='" + departament + '\'' +
                 ", eventsID='" + eventsID + '\'' +

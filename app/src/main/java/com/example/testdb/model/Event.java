@@ -15,6 +15,8 @@ public class Event {
     private String grpupsNum;
     private String predmet;
 
+    private String fio;
+
     private SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
     public Long getId() {
@@ -71,6 +73,14 @@ public class Event {
 
     public void setPredmet(String predmet) {
         this.predmet = predmet;
+    }
+
+    public String getFio() {
+        return fio;
+    }
+
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
     @Override
